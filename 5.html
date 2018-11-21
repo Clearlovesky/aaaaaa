@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .activated{
+            background-color: pink;
+        }
+        .skybb{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button :class="{activated: isActivated}" v-on:click="handleClick">{{msg}}</button>
+        <button :class="[skya, skybb]" @click="handleClickaa">{{msgaa}}</button>
+        <button :style="[styleObj,{fontSize: '20px'}]" @click="handleClickbb">哈哈哈</button>
+        <ul>
+            <li v-for="item of list">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '德玛西亚',
+                msgaa: '诺克萨斯',
+                isActivated: false,
+                skya: '',
+                skybb: 'skybb',
+                styleObj: {
+                    backgroundColor: 'blue',
+                    color: "#fff"
+                },
+                list: ["刺激战场","王者荣耀","炉石传说"]
+            },
+            methods: {
+                handleClick () {
+                    this.isActivated= !this.isActivated
+                },
+                handleClickaa () {
+                    this.skybb=''
+                    this.skya= this.skya==="activated" ? "" : "activated"
+                    vm.$set(vm.list,1,"我是傻逼")
+                },
+                handleClickbb () {
+                    this.styleObj.backgroundColor= this.styleObj.backgroundColor==="blue" ? "red" : "blue"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

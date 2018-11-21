@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="base.css">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <div v-bind:title="content" v-on:click="handleClick">{{content}}</div>
+        <input v-model="content" type="text">
+        1:<input type="text" v-model="firstName">
+        2:<input type="text" v-model="lastName">
+        <div v-show="show">{{fullName}}</div>
+        <button v-on:click="handleSubmit">提交</button>
+        <div v-on:click="toggleClick" style="font-size: .4rem;background-color: pink;">{{count}}</div>
+        <ul>
+            <li style="list-style: none;" v-for="(item,index) of list" v-bind:key="index">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                content:"vue入门",
+                firstName:"..",
+                lastName:"......",
+                count:0,
+                show:true,
+                list:[]
+            },
+            methods:{
+                handleClick:function(){
+                    this.content="123"
+                },
+                toggleClick:function(){
+                    this.show=!this.show
+                },
+                handleSubmit:function(){
+                    this.list.push(this.content)
+                    this.content=''
+                }
+            },
+            computed:{
+                fullName:function(){
+                    return this.firstName+''+this.lastName
+                }
+            },
+            watch:{
+                fullName:function(){
+                    this.count++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 父组件向子组件传参  通过属性(传过去的都是字符串,这样写) -->
+        <child :content="'hello world'"></child>
+        <child content="hello world"></child>
+        <!-- 传 数字,通过v-bind -->
+        <!-- <child v-bind:content="12345"></child> -->
+        <!-- 传对象 数字 字符串   -->
+        <!-- <child v-bind:content="{a:1}"></child> -->
+    </div>
+    <script>
+        Vue.component('child', {
+            props: {
+                // content: [Number, String, Object]
+                content: {
+                    type: String,
+                    // required: false,
+                    // default: 'aaaa',
+                    validator (value) {
+                        return value.length > 5
+                    }
+                }
+            },
+            template: '<div>{{content}}</div>'
+        })
+        var vm = new Vue({
+            el: '#root'
+        })
+    </script>
+</body>
+</html>

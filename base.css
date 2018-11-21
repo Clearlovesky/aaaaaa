@@ -1,0 +1,160 @@
+@charset "utf-8";
+/* reset */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body{
+  -webkit-text-size-adjust: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  width: 100%;
+  height: 100%;
+  font-family: PingFangSC-light, "Helvetica Neue", Helvetica, "Microsoft Yahei", STHeiTi, Arial, sans-serif;
+  color: #222029;
+  background-color: #fcfbff;
+}
+body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,pre,form,input,textarea,th,td,select{
+  margin: 0; 
+  padding: 0; 
+  font-weight: normal;
+  text-indent: 0;
+}
+a,button,input,textarea,select{ 
+  background: none; 
+  -webkit-tap-highlight-color: rgba(255,0,0,0); 
+  outline: none; 
+  -webkit-appearance: none;
+}
+em{
+  font-style: normal;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  border:none; 
+  vertical-align:top;
+}
+table{
+  border-collapse: collapse;
+}
+textarea{ 
+  resize: none; 
+  overflow: auto;
+}
+/* end reset */
+
+/* public */
+/* 清除浮动 */
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.clearfix {
+  *zoom: 1; /*IE/7/6*/  /*兼容IE6下的写法*/
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/* 强制换行 */
+.toWrap{
+  word-break: break-all; /* 只对英文起作用，以字母作为换行依据。 */
+  word-wrap: break-word; /* 只对英文起作用，以单词作为换行依据。*/
+  white-space: pre-wrap; /* 只对中文起作用，强制换行。*/
+}
+/* 禁止换行 */
+.noWrap{
+  white-space: nowrap;
+}
+/* 禁止换行,超出省略号 */
+.noWrapEllipsis{
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+/* 多行省略号 */
+.moreEllipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+}
+/* 文字两端对齐 */
+.text-justify{
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+.center {
+  text-align: center
+}
+.vertical-middle {
+  vertical-align: middle
+}
+/* flex */
+.flex {
+  display: flex;
+  display: -webkit-flex; /* Safari */
+}
+/* 竖向 */
+.flex-direction {
+  flex-direction: column;
+}
+/* 换行 */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+/* 对齐方式(两端对齐) */
+.space-between {
+  justify-content: space-between;
+}
+/* 对齐方式(两侧间隔相等) */
+.space-around {
+  justify-content: space-around;
+}
+/* 垂直对齐 */
+.flex-center {
+  align-items: center;
+}
+/* 不缩小 */
+.flex-shrink {
+  flex-shrink: 0;
+}
+/* flex-grow(0，存在剩余空间也不放大), flex-shrink(1,可伸缩) 和 flex-basis(不固定大小) */
+/* auto === 1 1 auto */
+/* none === 0 0 auto */
+.item-flex {
+  flex: auto;
+}
+/* public end */
+#app {
+  max-width: 15.0rem;
+  margin: 0 auto;
+  height: 100%;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: #fff;
+  font-size: .52rem;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+  font-size: .52rem;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #fff;
+  font-size: .52rem;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #fff;
+  font-size: .52rem;
+}

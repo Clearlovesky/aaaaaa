@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <table>
+            <tbody>
+                <tr is="row" ref="one" @change="handleChange"></tr>
+                <tr is="row" ref="two" @change="handleChange"></tr>
+                <tr is="row" ref="three" @change="handleChange"></tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        Vue.component("row",{
+            template:'<tr @click="handleClick"><td>{{content}}</td></tr>',
+            data () {
+                return {
+                    content: '德玛西亚'
+                }
+            },
+            methods: {
+                handleClick () {
+                    console.log(this.$refs.hello.innerHTML)
+                    this.$emit('change')
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#root',
+            methods: {
+                handleChange () {
+                    console.log(this.$refs.one.content)
+                    console.log(this.$refs.two.content)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
